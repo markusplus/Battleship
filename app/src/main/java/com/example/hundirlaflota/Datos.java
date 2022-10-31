@@ -1,7 +1,9 @@
 package com.example.hundirlaflota;
 
-public class Datos {
-    int numBarcos, tam_X, tam_Y;
+import java.util.List;
 
+public class Datos {
+    public static int numBarcos, tam_X, tam_Y;
+    public static List<Celda> barcos;
 
 }

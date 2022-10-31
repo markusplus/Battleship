@@ -5,6 +5,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
@@ -19,20 +21,21 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout verticalLayout1;
     private static final int TAM_X = 10, TAM_Y = 10;
     private ConstraintLayout fondo;
+    private TextView texto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         verticalLayout = (LinearLayout) findViewById(R.id.verticalLayout);
+        verticalLayout.setBackgroundResource(R.mipmap.mar);
         verticalLayout1 = (LinearLayout) findViewById(R.id.verticalLayout1);
+        verticalLayout1.setBackgroundResource(R.mipmap.mar);
         fondo = (ConstraintLayout) findViewById(R.id.fondo);
+        texto = (TextView) findViewById(R.id.textView);
 
-        fondo.setBackgroundResource(R.mipmap.mar);
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        width = metrics.widthPixels;
-        height = metrics.heightPixels;
         iniciaTablero(TAM_X,TAM_Y, verticalLayout);
         iniciaTablero(TAM_X,TAM_Y, verticalLayout1);
     }
@@ -51,8 +54,14 @@ public class MainActivity extends AppCompatActivity {
             for(int j = 0; j < x; j++) {
                 Celda celdaAuxiliar = new Celda(this).putPosicion(i,j);
                 //tablero[i][j] = new Celda(this).putPosicion(i,j);
-                celdaAuxiliar.setLayoutParams(new LinearLayout.LayoutParams((int) width / x, (int) (height / y) / 2));
+                celdaAuxiliar.setLayoutParams(new LinearLayout.LayoutParams(150,150));
                 layoutAuxiliar.addView(celdaAuxiliar);
+                celdaAuxiliar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
             }
             layout.addView(layoutAuxiliar);
         }
