@@ -5,12 +5,12 @@ import android.widget.ImageButton;
 
 public class Celda extends androidx.appcompat.widget.AppCompatImageButton {
     private int x, y;
+    private int valor;
 
     public Celda(Context context) {
         super(context);
         this.setImageResource(R.mipmap.bordes);
         this.setBackground(null);
-        //this.setImageAlpha(0);
         this.setScaleType(ScaleType.FIT_XY);
         this.setAdjustViewBounds(false);
         this.setPadding(0,0,0,0);
@@ -21,4 +21,18 @@ public class Celda extends androidx.appcompat.widget.AppCompatImageButton {
         return this;
     }
 
+    public void setValor(int v) {
+        this.valor = v;
+    }
+
+    public int getValor() {
+        return this.valor;
+    }
+
+    public int getPosX() {
+        return x;
+    }
+    public int getPosY() {
+        return y;
+    }
 }

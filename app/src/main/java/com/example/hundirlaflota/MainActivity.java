@@ -16,12 +16,11 @@ public class MainActivity extends AppCompatActivity {
 
     private double width, height;
     private DisplayMetrics metrics;
-    private Celda[][] tablero;
     private LinearLayout verticalLayout;
     private LinearLayout verticalLayout1;
     private static final int TAM_X = 10, TAM_Y = 10;
     private ConstraintLayout fondo;
-    private TextView texto;
+    public TextView texto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void iniciaTablero(int x, int y, LinearLayout layout) {
-        tablero = new Celda[x][y];
-        for (int i = 0; i < y; i++) {
+        Datos.tablero = new Celda[x][y];
+        for (int j = 0; j < y; j++) {
             LinearLayout layoutAuxiliar = new LinearLayout(this);
             layoutAuxiliar.setOrientation(LinearLayout.HORIZONTAL);
             layoutAuxiliar.setLayoutParams(
@@ -51,17 +50,20 @@ public class MainActivity extends AppCompatActivity {
                             ViewGroup.LayoutParams.WRAP_CONTENT
                     )
             );
-            for(int j = 0; j < x; j++) {
+            for(int i = 0; i < x; i++) {
                 Celda celdaAuxiliar = new Celda(this).putPosicion(i,j);
-                //tablero[i][j] = new Celda(this).putPosicion(i,j);
+                celdaAuxiliar.setValor(-1);     //Una celda sin barcos tiene el valor de -1
+                Datos.tablero[i][j] = celdaAuxiliar;
                 celdaAuxiliar.setLayoutParams(new LinearLayout.LayoutParams(150,150));
-                layoutAuxiliar.addView(celdaAuxiliar);
                 celdaAuxiliar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Barco b = new Barco(3,celdaAuxiliar,'d');
+                        texto.setText(b.getPos_X()+", "+b.getPos_Y());
                     }
                 });
+                //Datos.tableroCeldas[i][j] = celdaAuxiliar;
+                layoutAuxiliar.addView(celdaAuxiliar);
             }
             layout.addView(layoutAuxiliar);
         }
