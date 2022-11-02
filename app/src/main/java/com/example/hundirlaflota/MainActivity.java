@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Barco b = new Barco(3,celdaAuxiliar,'d');
-                        texto.setText(b.getPos_X()+", "+b.getPos_Y());
+                        texto.setText(""+Datos.tablero[celdaAuxiliar.getPosX()+1][celdaAuxiliar.getPosY()].getValor());
                     }
                 });
                 //Datos.tableroCeldas[i][j] = celdaAuxiliar;
