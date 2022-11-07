@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int TAM_X = 10, TAM_Y = 10;
     private ConstraintLayout fondo;
     public TextView texto;
+    private int cont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +30,15 @@ public class MainActivity extends AppCompatActivity {
         verticalLayout = (LinearLayout) findViewById(R.id.verticalLayout);
         verticalLayout.setBackgroundResource(R.mipmap.mar);
         verticalLayout1 = (LinearLayout) findViewById(R.id.verticalLayout1);
-        verticalLayout1.setBackgroundResource(R.mipmap.mar);
+        //verticalLayout1.setBackgroundResource(R.mipmap.mar);
         fondo = (ConstraintLayout) findViewById(R.id.fondo);
         texto = (TextView) findViewById(R.id.textView);
+        cont = 0;
 
         metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         iniciaTablero(TAM_X,TAM_Y, verticalLayout);
-        iniciaTablero(TAM_X,TAM_Y, verticalLayout1);
+        //iniciaTablero(TAM_X,TAM_Y, verticalLayout1);
     }
 
     public void iniciaTablero(int x, int y, LinearLayout layout) {
@@ -58,8 +60,10 @@ public class MainActivity extends AppCompatActivity {
                 celdaAuxiliar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Barco b = new Barco(3,celdaAuxiliar,'d');
-                        texto.setText(""+Datos.tablero[celdaAuxiliar.getPosX()+1][celdaAuxiliar.getPosY()].getValor());
+                        Barco b = new Barco(3, celdaAuxiliar, 'd');
+                        b.iniciaBarco();
+                        Datos.tablero[b.getPos_X()][b.getPos_Y()].setValor(0);
+
                     }
                 });
                 //Datos.tableroCeldas[i][j] = celdaAuxiliar;
