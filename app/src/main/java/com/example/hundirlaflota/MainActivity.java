@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
             layout.addView(layoutAuxiliar);
         }
         rnd = new Random();
-        while (contBarcosAux > 0) {
+        while (contBarcosAux < tamanosBarcoAux.length) {
             int randX = rnd.nextInt(x);
             int randY = rnd.nextInt(y);
             char o = 0;
@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
             if (b.iniciaBarcoIA())
                 barcos[contIA] = b;
             contIA++;
-            contBarcosAux--;
+            contBarcosAux++;
         }
         return barcos;
     }
