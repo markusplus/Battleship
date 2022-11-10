@@ -24,11 +24,9 @@ public class Celda extends androidx.appcompat.widget.AppCompatImageButton {
     public void setValor(int v) {
         this.valor = v;
     }
-
     public int getValor() {
         return this.valor;
     }
-
     public int getPosX() {
         return x;
     }
